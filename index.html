@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rapider API Development &amp; Testing</title>
+  <script src="https://kit.fontawesome.com/5b23df26dc.js" crossorigin="anonymous" defer></script>
+  <script src="/assets/js/rapider-components.js" defer></script>
+  <link rel="stylesheet" href="/assets/themes/rapider-tailwind-theme.css">
+  <link rel="stylesheet" href="/assets/themes/crm-expenses-design.css">
+  <style>
+    body, html { margin: 0; padding: 0; height: 100%; width: 100%; overflow: hidden; }
+    iframe#appFrame { width: 100%; height: 100%; border: none; }
+  </style>
+</head>
+<body>
+  <iframe id="appFrame" src="pages/api-hub/api-hub.html"></iframe>
+  <script>
+    const routes = {
+  "api-hub": "pages/api-hub/api-hub.html",
+  "api-specs": "pages/api-specs/api-specs.html",
+  "api-collections": "pages/api-collections/api-collections.html",
+  "developer-portal": "pages/developer-portal/developer-portal.html",
+  "api-environments": "pages/api-environments/api-environments.html",
+  "mock-servers": "pages/mock-servers/mock-servers.html",
+  "api-test-runs": "pages/api-test-runs/api-test-runs.html",
+  "api-monitors": "pages/api-monitors/api-monitors.html",
+  "lint-governance": "pages/lint-governance/lint-governance.html",
+  "breaking-changes": "pages/breaking-changes/breaking-changes.html",
+  "request-workbench": "pages/request-workbench/request-workbench.html",
+  "spec-test-detail": "pages/spec-test-detail/spec-test-detail.html"
+};
+    function handleHash() {
+      const hash = window.location.hash.replace(/^#\/?/, '').split('?')[0];
+      const route = hash || 'api-hub';
+      const target = routes[route] || routes['api-hub'];
+      const iframe = document.getElementById('appFrame');
+      if (iframe) iframe.src = target;
+    }
+    window.addEventListener('hashchange', handleHash);
+    window.addEventListener('load', handleHash);
+  </script>
+</body>
+</html>
